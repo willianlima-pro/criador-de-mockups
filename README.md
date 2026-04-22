@@ -274,7 +274,7 @@ criador-de-mockups/
 │   ├── cm-editar.md
 │   ├── cm-config.md
 │   └── cm-help.md
-├── 📂 agents/                ← comandos para Codex CLI
+├── 📂 .agents/                ← comandos para Codex CLI
 │   ├── cm-novo.md
 │   ├── cm-editar.md
 │   ├── cm-config.md

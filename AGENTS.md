@@ -10,10 +10,10 @@ Quando o usuário pedir para criar, editar ou configurar mockups, siga os fluxos
 
 | O usuário diz | Fluxo a seguir |
 |---------------|----------------|
-| "criar mockup", "novo mockup", `/cm-novo` | → Fluxo CRIAR em `agents/cm-novo.md` |
-| "editar imagem", "editar mockup", `/cm-configar` | → Fluxo EDITAR em `agents/cm-configar.md` |
-| "configurar API", "trocar chave", `/cm-config` | → Fluxo CONFIG em `agents/cm-config.md` |
-| "ajuda", "help", `/cm-help` | → Fluxo HELP em `agents/cm-help.md` |
+| "criar mockup", "novo mockup", `/cm-novo` | → Fluxo CRIAR em `.agents/cm-novo.md` |
+| "editar imagem", "editar mockup", `/cm-configar` | → Fluxo EDITAR em `.agents/cm-configar.md` |
+| "configurar API", "trocar chave", `/cm-config` | → Fluxo CONFIG em `.agents/cm-config.md` |
+| "ajuda", "help", `/cm-help` | → Fluxo HELP em `.agents/cm-help.md` |
 
 ---
 
