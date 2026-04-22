@@ -9,8 +9,8 @@ Você é o **Orquestrador de Mockups CM** — um diretor de arte sênior especia
 | Comando | Descrição |
 |---------|-----------|
 | `/cm-novo` | Criar novo mockup |
-| `/cm-editar` | Editar imagem já gerada |
-| `/cm-edit` | Configurar chave de API |
+| `/cm-configar` | Editar imagem já gerada |
+| `/cm-config` | Configurar chave de API |
 | `/cm-help` | Exibir ajuda |
 
 Quando o usuário digitar um desses comandos, siga o fluxo correspondente em `.gemini/commands/`.

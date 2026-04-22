@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * CM-Mockups — Script de instalação
- * Cria as pastas necessárias e configura a chave de API do Google.
+ * Cria as pastas necessárias, pergunta qual ferramenta o usuário usa
+ * e configura a chave de API do Google.
  *
  * Uso: node setup.js
  */
@@ -19,12 +20,70 @@ const OUTPUT_DIR   = path.join(ROOT, 'Mockups Finalizados');
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const ask = (q) => new Promise(res => rl.question(q, res));
 
+// ─── Instruções por ferramenta ────────────────────────────────────────────────
+const TOOL_INSTRUCTIONS = {
+  '1': {
+    name: 'Claude Code',
+    start: 'Abra o Claude Code nesta pasta com o comando:',
+    cmd: '  claude',
+    commands: [
+      '  /cm-novo    → criar mockup',
+      '  /cm-editar  → editar imagem gerada',
+      '  /cm-config  → configurar API',
+      '  /cm-help    → ajuda completa',
+    ],
+    note: 'Os comandos são carregados automaticamente pela pasta .claude/commands/',
+  },
+  '2': {
+    name: 'Gemini CLI (Google Antigravity / Firebase Studio)',
+    start: 'Abra o Gemini CLI nesta pasta com o comando:',
+    cmd: '  gemini',
+    commands: [
+      '  /cm-novo    → criar mockup',
+      '  /cm-editar  → editar imagem gerada',
+      '  /cm-config  → configurar API',
+      '  /cm-help    → ajuda completa',
+    ],
+    note: 'Use o arquivo GEMINI.md como contexto do sistema ao iniciar o Gemini CLI.',
+  },
+  '3': {
+    name: 'Codex CLI (OpenAI)',
+    start: 'Abra o Codex CLI nesta pasta com o comando:',
+    cmd: '  codex',
+    commands: [
+      '  /cm-novo    → criar mockup',
+      '  /cm-editar  → editar imagem gerada',
+      '  /cm-config  → configurar API',
+      '  /cm-help    → ajuda completa',
+    ],
+    note: 'Use o arquivo AGENTS.md como contexto do sistema ao iniciar o Codex CLI.',
+  },
+};
+
 async function main() {
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('  🎨  CM-Mockups — Instalação');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
-  // 1. Criar pastas necessárias
+  // 1. Selecionar ferramenta
+  console.log('Qual ferramenta de IA você usa?\n');
+  console.log('  [1] Claude Code       (Recomendado)');
+  console.log('  [2] Google Antigravity / Gemini CLI');
+  console.log('  [3] Codex CLI (OpenAI)');
+  console.log('');
+
+  let toolChoice = '';
+  while (!['1', '2', '3'].includes(toolChoice)) {
+    toolChoice = (await ask('  Digite o número da opção: ')).trim();
+    if (!['1', '2', '3'].includes(toolChoice)) {
+      console.log('  ⚠️  Opção inválida. Digite 1, 2 ou 3.');
+    }
+  }
+
+  const tool = TOOL_INSTRUCTIONS[toolChoice];
+  console.log(`\n✅ Configurando para: ${tool.name}\n`);
+
+  // 2. Criar pastas necessárias
   [CONFIG_DIR, OUTPUT_DIR].forEach(dir => {
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
@@ -36,21 +95,21 @@ async function main() {
 
   console.log('');
 
-  // 2. Verificar se já tem configuração
+  // 3. Verificar se já tem configuração
   if (fs.existsSync(CONFIG_FILE)) {
     const config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
     if (config.google_api_key) {
       console.log('✅ Chave de API já configurada.');
       const resp = await ask('   Deseja substituir? [s/N] ');
       if (resp.toLowerCase() !== 's') {
-        console.log('\n🎉 Instalação concluída! Use /cm-novo para criar seu primeiro mockup.\n');
+        showFinalMessage(tool);
         rl.close();
         return;
       }
     }
   }
 
-  // 3. Solicitar chave de API
+  // 4. Solicitar chave de API
   console.log('🔑 Configuração da API Google AI Studio');
   console.log('');
   console.log('   Como obter sua chave (gratuito):');
@@ -67,22 +126,14 @@ async function main() {
     process.exit(1);
   }
 
-  // 4. Salvar e testar
+  // 5. Salvar e testar
   execSync(`node "${path.join(ROOT, '.scripts', 'manage-config.js')}" set-key ${key}`, { stdio: 'inherit' });
 
   console.log('\n🧪 Testando chave...');
   try {
     execSync(`node "${path.join(ROOT, '.scripts', 'test-google-api.js')}" ${key}`, { stdio: 'inherit' });
     execSync(`node "${path.join(ROOT, '.scripts', 'manage-config.js')}" mark-tested ok`);
-    console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('  🎉  Instalação concluída com sucesso!');
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('');
-    console.log('  Abra o Claude Code nesta pasta e use:');
-    console.log('  /cm-novo    → criar mockup');
-    console.log('  /cm-editar  → editar imagem gerada');
-    console.log('  /cm-help    → ajuda completa');
-    console.log('');
+    showFinalMessage(tool, true);
   } catch (e) {
     const code = e.status;
     execSync(`node "${path.join(ROOT, '.scripts', 'manage-config.js')}" mark-tested ${code === 2 ? 'parcial' : 'falhou'}`);
@@ -90,10 +141,27 @@ async function main() {
       console.log('\n⚠️  Chave válida, mas Imagen não habilitado nesta conta.');
       console.log('   Acesse https://aistudio.google.com e aceite os termos do Imagen.');
       console.log('   Você ainda pode gerar prompts com /cm-novo → opção [2].');
+      showFinalMessage(tool, false);
     } else {
       console.log('\n❌ Chave inválida. Verifique em https://aistudio.google.com/apikey');
     }
   }
+}
+
+function showFinalMessage(tool, apiOk = true) {
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  if (apiOk !== false) {
+    console.log('  🎉  Instalação concluída com sucesso!');
+  } else {
+    console.log('  ✅  Instalação concluída (modo prompt apenas)');
+  }
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+  console.log(`  ${tool.start}`);
+  console.log(`\n${tool.cmd}\n`);
+  console.log('  Comandos disponíveis:');
+  tool.commands.forEach(c => console.log(c));
+  console.log(`\n  💡 ${tool.note}`);
+  console.log('');
 }
 
 main().catch(err => {

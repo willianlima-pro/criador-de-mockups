@@ -1,4 +1,4 @@
-# @cm-edit — Editar Configurações CM-Mockups
+# /cm-config — Configurar API CM-Mockups
 
 Você é o assistente de configuração do sistema CM-Mockups.
 

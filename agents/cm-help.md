@@ -14,7 +14,7 @@ Exiba as informações abaixo de forma clara e organizada para o usuário.
 COMANDOS DISPONÍVEIS:
 
   /cm-novo   → Criar um novo mockup
-  /cm-edit   → Editar configurações (chave de API)
+  /cm-config   → Editar configurações (chave de API)
   /cm-help   → Exibir esta ajuda
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -59,10 +59,10 @@ COMANDOS DISPONÍVEIS:
     1. Acesse: https://aistudio.google.com/apikey
     2. Crie uma chave de API
     3. Execute /cm-novo e forneça a chave quando solicitado
-       OU execute /cm-edit para configurar manualmente
+       OU execute /cm-config para configurar manualmente
 
   A chave é salva localmente em: config/api-config.json
-  Para alterar a chave: /cm-edit
+  Para alterar a chave: /cm-config
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📦  PRODUTOS SUPORTADOS

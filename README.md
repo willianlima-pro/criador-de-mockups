@@ -1,15 +1,15 @@
-# 🎨 CM-Mockups — Criador de Mockups para Claude Code
+# 🎨 CM-Mockups — Criador de Mockups com IA
 
-Skill para **Claude Code** que transforma o seu rótulo ou arte em um mockup fotorrealista de produto em **resolução 2K (2400×1792px)** diretamente no terminal.
+Skill para **Claude Code**, **Gemini CLI** e **Codex CLI** que transforma o seu rótulo ou arte em um mockup fotorrealista de produto em **resolução 2K (2400×1792px)** diretamente no terminal.
 
-Funciona com **Google Gemini 3.1 Flash Image Preview** — o rótulo é enviado direto para a API, sem ser analisado ou reinterpretado. O resultado é um mockup de estúdio profissional com o seu design exato aplicado.
+Funciona com **Google Gemini 3.1 Flash Image Preview** — o rótulo é enviado direto para a API como dado binário, sem ser descrito nem reinterpretado. O resultado é um mockup de estúdio profissional com o seu design exato aplicado.
 
 ---
 
 ## ✨ O que você consegue fazer
 
 | Entrada | O que acontece |
-|--------|----------------|
+|---------|----------------|
 | Rótulo (PNG/JPG) | Mockup 3D fotorrealista 2K gerado automaticamente |
 | Rótulo + referência de estilo | Mockup no formato da referência com seu rótulo |
 | Apenas descrição | Prompt profissional pronto para o Google Flow Labs |
@@ -17,10 +17,124 @@ Funciona com **Google Gemini 3.1 Flash Image Preview** — o rótulo é enviado 
 
 ---
 
+## 🖼️ Mockups que você consegue criar
+
+### Produtos Físicos — Saúde & Bem-estar
+| Tipo de embalagem | Exemplos |
+|-------------------|---------|
+| 💊 Frasco HDPE cilíndrico | Suplementos, vitaminas, termogênicos, whey |
+| 🫙 Pote wide-mouth | Creatina, proteína em pó, colágeno |
+| 💉 Ampola de vidro | Soros, vitamina C injetável, ácido hialurônico |
+| 📦 Blister cartonado | Cápsulas individuais, comprimidos, gomas |
+| 🧴 Bisnaga / Tubo | Cremes, pomadas, géis, pastas |
+| 🍬 Sachê doy-pack | Colágeno solúvel, chás, suplementos em pó |
+| 🫧 Frasco pump/airless | Sérum, fluido, vitamina C facial |
+| 💧 Frasco conta-gotas | Tinturas, óleos essenciais, CBD |
+
+### Produtos Físicos — Beleza & Skincare
+| Tipo de embalagem | Exemplos |
+|-------------------|---------|
+| 🏺 Pote de vidro | Creme facial premium, máscara capilar |
+| 🧴 Frasco loção | Hidratante corporal, protetor solar |
+| 💄 Stick / Batom | Protetor labial, base bastão |
+| 🧪 Refil cartonado | Perfume, skincare eco-friendly |
+| 🪙 Lata alumínio | Desodorante, pasta dental natural |
+
+### Produtos Físicos — Alimentos & Bebidas
+| Tipo de embalagem | Exemplos |
+|-------------------|---------|
+| 🫙 Pote rosca | Mel, pasta de amendoim, proteína |
+| 🧃 Caixinha tetra | Bebida vegetal, suco funcional |
+| 🍫 Embalagem flow-pack | Barra de proteína, snack |
+| 🥤 Lata bebida | Energético, pré-treino líquido, RTD |
+| 🫙 Pote pop-top | Grãos, mix de castanhas, granola |
+
+### Infoprodutos & Digitais
+| Tipo | Exemplos |
+|------|---------|
+| 📚 Ebook (capa 3D) | Livros digitais, guias, manuais |
+| 💻 Software box | Cursos, ferramentas, SaaS |
+| 📱 App mockup | Aplicativos mobile em device |
+| 📋 Planilha / Template | Ferramentas digitais |
+| 🎓 Certificado / Diploma | Programas educacionais |
+| 🗂️ Kit digital | Bundle de produtos digitais |
+
+---
+
+## 💬 Exemplos de prompts
+
+### Exemplo 1 — Suplemento encapsulado
+
+```
+/cm-novo frasco de suplemento HDPE 60 cápsulas, nicho de saúde --image
+```
+
+**Prompt gerado pela IA (enviado ao Gemini):**
+```
+Product hero: cylindrical HDPE bottle 300ml, white soft-touch matte finish,
+with the provided label artwork applied to the surface.
+Props: amber glass dropper bottle, loose white capsules scattered,
+mortar and pestle, dried botanical herbs, wooden measuring spoon.
+Surface: white infinity curve, light oak wood accent panel.
+Lighting: soft key light from upper-left, subtle rim light right side,
+shallow depth of field, professional studio photography.
+Style: high-end pharmaceutical editorial, photorealistic 8K render.
+```
+
+---
+
+### Exemplo 2 — Ebook de finanças
+
+```
+/cm-novo ebook de finanças pessoais, investimentos, tema escuro --prompt
+```
+
+**Saída para o Google Flow Labs:**
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 PROMPT — Cole no Google Flow Labs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3D rendered digital ebook mockup, hardcover floating at 30° angle.
+With the provided cover artwork applied to the front face.
+Props: scattered gold coins, minimalist calculator, fountain pen on dark
+obsidian surface. Background: dark charcoal gradient with subtle bokeh.
+Lighting: dramatic spotlight from above, gold rim light, financial elegance.
+Style: luxury editorial photography, photorealistic.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚫 NEGATIVE PROMPT — Cole no campo negativo
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+blurry, low resolution, plastic look, toy, cartoon, flat, 2D,
+bad lighting, overexposed, text on background, watermark
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 COMO USAR NO FLOW LABS:
+  1. Acesse https://flow.google ou https://labs.google/fx/tools/whisk
+  2. Suba sua capa como IMAGE REFERENCE
+  3. Cole o PROMPT no campo de texto
+  4. Cole o NEGATIVE PROMPT no campo negativo
+  5. Gere o mockup
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+### Exemplo 3 — Skincare premium com referência de estilo
+
+```
+/cm-novo frasco sérum vitamina C, skincare premium, duas referências --image
+```
+
+O sistema pede duas imagens: a referência de **estilo** (formato do frasco) e o **rótulo** (sua arte). Ambas são enviadas juntas à API — o rótulo sai idêntico aplicado no formato exato da referência.
+
+---
+
 ## 📋 Requisitos
 
 - **Node.js 18+** → [nodejs.org](https://nodejs.org)
-- **Claude Code** → `npm install -g @anthropic-ai/claude-code`
+- **Ferramenta de IA** → Claude Code, Gemini CLI ou Codex CLI (escolhida no setup)
 - **Chave de API Google AI Studio** → gratuita em [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
 - **Python 3 + Pillow** *(opcional — usado só como fallback de upscale)*
 
@@ -46,15 +160,19 @@ node setup.js
 ```
 
 O setup vai:
-- ✅ Criar as pastas `config/` e `Mockups Finalizados/` automaticamente
+- ✅ Perguntar qual ferramenta você usa (Claude Code, Gemini CLI ou Codex)
+- ✅ Criar a pasta `Mockups Finalizados/` automaticamente
 - ✅ Solicitar sua chave de API do Google
 - ✅ Testar a chave e confirmar que está funcionando
+- ✅ Mostrar como ativar os comandos na sua ferramenta
 
-### 3. Abra o Claude Code na pasta do projeto
+### 3. Abra sua ferramenta na pasta do projeto
 
-```bash
-claude
-```
+| Ferramenta | Comando |
+|-----------|---------|
+| Claude Code | `claude` |
+| Gemini CLI | `gemini` (com `GEMINI.md` como contexto) |
+| Codex CLI | `codex` (com `AGENTS.md` como contexto) |
 
 Pronto. Os comandos já estão disponíveis.
 
@@ -65,7 +183,7 @@ Pronto. Os comandos já estão disponíveis.
 ### `/cm-novo` — Criar mockup
 
 ```
-/cm-novo crie um mockup do produto encapsulado
+/cm-novo crie um mockup de frasco de suplemento encapsulado
 ```
 
 O assistente vai guiar você pelo processo:
@@ -90,7 +208,7 @@ O assistente vai guiar você pelo processo:
 /cm-editar
 ```
 
-Lista os mockups recentes e aplica qualquer modificação:
+Lista os mockups recentes em `Mockups Finalizados/` e aplica qualquer modificação:
 
 ```
 💡 Exemplos de instrução:
@@ -105,13 +223,14 @@ Você pode iterar quantas vezes quiser sobre a mesma imagem.
 
 ---
 
-### `/cm-edit` — Configurar ou trocar a chave de API
+### `/cm-config` — Configurar ou trocar a chave de API
 
 ```
-/cm-edit
+/cm-config
 ```
 
 Opções:
+- Ver status da configuração atual
 - Atualizar chave de API
 - Testar a chave atual
 - Remover configuração
@@ -145,44 +264,30 @@ Isso elimina erros de texto, distorções tipográficas e alucinações do model
 
 ```
 criador-de-mockups/
-├── 📂 .claude/commands/
-│   ├── cm-novo.md        ← /cm-novo
-│   ├── cm-editar.md      ← /cm-editar
-│   ├── cm-edit.md        ← /cm-edit
-│   └── cm-help.md        ← /cm-help
-├── 📂 scripts/
-│   ├── generate-with-reference.js  ← geração com rótulo
-│   ├── generate-image.js           ← geração sem referência
-│   ├── edit-image.js               ← edição de imagem
-│   ├── manage-config.js            ← gerenciar chave de API
-│   ├── test-google-api.js          ← testar chave
-│   └── upscale-2k.py               ← upscale fallback (PIL)
-├── 📂 config/
-│   └── api-config.json   ← criado pelo setup (não vai para o git)
-├── 📂 Mockups Finalizados/
-│   └── ...               ← suas imagens geradas (não vão para o git)
-├── agente-mockups.md     ← referência de props e prompts por nicho
-├── setup.js              ← 🔧 instalar e configurar
+├── 📂 .claude/commands/      ← comandos para Claude Code
+│   ├── cm-novo.md              /cm-novo
+│   ├── cm-editar.md            /cm-editar
+│   ├── cm-config.md            /cm-config
+│   └── cm-help.md              /cm-help
+├── 📂 .gemini/commands/      ← comandos para Gemini CLI
+│   ├── cm-novo.md
+│   ├── cm-editar.md
+│   ├── cm-config.md
+│   └── cm-help.md
+├── 📂 agents/                ← comandos para Codex CLI
+│   ├── cm-novo.md
+│   ├── cm-editar.md
+│   ├── cm-config.md
+│   └── cm-help.md
+├── 📂 Mockups Finalizados/   ← suas imagens geradas (não vão para o git)
+├── GEMINI.md                 ← contexto para Gemini CLI
+├── AGENTS.md                 ← contexto para Codex CLI
+├── setup.js                  ← 🔧 instalar e configurar
 ├── package.json
 └── README.md
 ```
 
----
-
-## 🎯 Nichos suportados
-
-Props e superfícies otimizados para cada nicho:
-
-| Nicho | Superfície padrão |
-|-------|------------------|
-| 💊 Suplementos / Encapsulados | Branco infinito |
-| 🏥 Farmácia / Manipulados | Branco clean |
-| 💆 Dermocosméticos / Skincare | Mármore branco |
-| 🧬 Biohacking / Longevidade | Ardósia escura |
-| 🌿 Fitoterápicos / Orgânicos | Madeira natural |
-| 💪 Nutrição Esportiva | Branco infinito |
-| 💰 Finanças / Investimentos | Madeira escura |
-| 📚 Infoprodutos / Educação | Branco gradiente |
+> As pastas `.scripts/` e `.config/` são criadas pelo setup e ficam ocultas — você não precisa mexer nelas.
 
 ---
 
@@ -190,7 +295,7 @@ Props e superfícies otimizados para cada nicho:
 
 | Problema | Solução |
 |----------|---------|
-| `❌ Não configurado` | Rode `node setup.js` ou `node scripts/manage-config.js set-key SUA_CHAVE` |
+| `❌ Não configurado` | Rode `node setup.js` novamente |
 | Chave inválida | Verifique em [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
 | Imagen não habilitado | Acesse [aistudio.google.com](https://aistudio.google.com) e aceite os termos do Imagen |
 | Limite de uso atingido | Atualize o spending cap em [aistudio.google.com/spend](https://aistudio.google.com/spend) |

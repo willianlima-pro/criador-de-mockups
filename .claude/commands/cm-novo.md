@@ -86,7 +86,7 @@ Após receber a chave:
 
 **Se a chave falhou anteriormente** (status = "falhou"), avise:
 ```
-⚠️ A chave de API salva está com problema. Use /cm-edit para atualizar ou continue sem imagem.
+⚠️ A chave de API salva está com problema. Use /cm-config para atualizar ou continue sem imagem.
 ```
 
 ---
@@ -263,6 +263,6 @@ Após a edição, mostre o resultado e repita a pergunta de edição (permitindo
 
 ```
 Para criar novo mockup: /cm-novo
-Para editar depois: /cm-editar
-Para configurações: /cm-edit
+Para editar depois: /cm-configar
+Para configurações: /cm-config
 ```
