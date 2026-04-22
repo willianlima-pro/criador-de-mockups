@@ -1,0 +1,35 @@
+# Configuração local (contém chaves de API)
+config/api-config.json
+
+# Imagens geradas (não versionar outputs)
+Mockups Finalizados/*.jpg
+Mockups Finalizados/*.jpeg
+Mockups Finalizados/*.png
+Mockups Finalizados/*.webp
+
+# Manter a pasta no repositório
+!Mockups Finalizados/.gitkeep
+
+# Configuração local do Claude Code (contém caminhos absolutos locais)
+.claude/settings.local.json
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V8
+.Trashes
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporários
+/tmp/
+*.tmp

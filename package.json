@@ -1,0 +1,23 @@
+{
+  "name": "cm-mockups",
+  "version": "1.2.0",
+  "description": "Skill para Claude Code que gera mockups fotorrealistas 2K de produtos físicos e infoprodutos usando Google Gemini 3.1 Flash Image Preview e Replicate Flux 1.1 Pro Ultra.",
+  "keywords": [
+    "claude-code",
+    "mockup",
+    "gemini",
+    "ai-image-generation",
+    "product-photography",
+    "skill"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test-api": "node scripts/test-google-api.js",
+    "config-status": "node scripts/manage-config.js status"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT"
+}
