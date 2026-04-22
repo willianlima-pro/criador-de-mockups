@@ -1,6 +1,11 @@
 # Configuração local (contém chaves de API)
 config/api-config.json
 
+# Pastas legadas (substituídas pelas ocultas .scripts/ .config/ .agente-mockups.md)
+scripts/
+config/
+agente-mockups.md
+
 # Imagens geradas (não versionar outputs)
 Mockups Finalizados/*.jpg
 Mockups Finalizados/*.jpeg
